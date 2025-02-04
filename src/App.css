@@ -69,7 +69,7 @@
 /* --- SIDE NAV --- */
 .side-nav {
   width: 8%;
-  height: 75%;
+  height: auto;
   position: absolute;
   top: calc(12% + 12% + 120px); /* Ensures 10% space below the top-container */
   left: 10%;
