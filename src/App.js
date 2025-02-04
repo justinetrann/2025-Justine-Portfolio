@@ -102,8 +102,6 @@ function App() {
         </div> {/* End of post */}
         {/* ChatBot Container */}
         <div className="chatbot">
-          <h2>New Section</h2>
-          <p>This is a new content container placed before the playlist.</p>
         </div>
         {/* Playlist Container */}
         <div className="playlist">
