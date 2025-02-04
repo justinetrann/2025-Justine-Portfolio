@@ -415,3 +415,19 @@
 .side-nav li:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+/* Expands for ABOUT */
+.about-window {
+  width: 500px;
+  height: 400px;
+}
+
+.about-text {
+  white-space: pre-line; /* Maintains line breaks */
+  font-size: 14px;
+  padding: 10px;
+  line-height: 1.5;
+  overflow-y: auto; /* Enables scrolling if text overflows */
+  max-height: 300px; /* Limits height, allowing scrolling */
+  word-wrap: break-word; /* Ensures long words don’t break the layout */
+}

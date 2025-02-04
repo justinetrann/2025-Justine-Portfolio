@@ -4,9 +4,18 @@ import { FaHeart } from "react-icons/fa";
 
 function FloatingWindow({ title, onClose }) {
   const isResume = title === "RESUME";
+  const isAbout = title === "ABOUT";
+  const aboutMessage = `
+  Right now, my nav bar is filled with placeholders, but I want to replace them with projects that truly excite me! 
+  Not just old school assignments from my resume, but creative, spontaneous ideas that spark my curiosity.
+
+  My latest fun idea? A chatbot—one where you can chat with me (or a virtual version of me) and ask me about my current experience!
+
+  This website may be simple for now, but my goal is to fill it with my passion for coding and bring my ideas to life. Stay tuned!
+  `;
 
   return (
-    <div className={`floating-window ${isResume ? "large-window" : ""}`}>
+    <div className={`floating-window ${isResume ? "large-window" : ""} ${isAbout ? "about-window" : ""}`}>
       <div className="floating-header">
         <span className="fake-link">https://{title.toLowerCase()}.com</span>
         <button className="close-button" onClick={onClose}>X</button>
@@ -20,6 +29,8 @@ function FloatingWindow({ title, onClose }) {
             style={{ border: "none" }}
             title="Resume"
           ></iframe>
+        ) : title === "ABOUT" ? (
+          <p className="about-text">{aboutMessage}</p>
         ) : (
           <>
             <h3>{title} Page</h3>
