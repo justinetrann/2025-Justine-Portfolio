@@ -23,7 +23,7 @@ function FloatingWindow({ title, onClose }) {
         ) : (
           <>
             <h3>{title} Page</h3>
-            <p>This is a fake webpage for {title}. Imagine content here!</p>
+            <p>This is a webpage for {title}. Content still in the works!</p>
           </>
         )}
       </div>
