@@ -123,7 +123,7 @@
 .post {
   width: 33%;
   height: auto;
-  min-height: 74%;
+  min-height: 76%;
   position: absolute;
   left: calc(10% + 8% + 20px); /* Positioned right of side-nav */
   top: calc(12% + 12% + 120px); /* Align with side-nav */
@@ -223,7 +223,7 @@
 /* --- COMMENTS SECTION --- */
 .comment-container {
   width: 100%;
-  max-height: 90px;
+  max-height: 100px;
   overflow-y: auto;
   border-top: 1px solid black;
   margin-top: 10px;
