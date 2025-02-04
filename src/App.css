@@ -306,12 +306,30 @@
   padding: 5px 0;
 }
 
+/* --- CHATBOT CONTAINER --- */
+.chatbot {
+  position: absolute;
+  left: calc(10% + 8% + 20px + 33% + 60px);
+  top: 5%;
+  width: 25%;
+  min-height: 390px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+}
 
 /* --- PLAYLIST CONTAINER --- */
 .playlist {
   position: absolute;
   left: calc(10% + 8% + 20px + 33% + 60px); /* Moves it right next to .post */
-  top: calc(12% + 12% + 450px); /* Aligns with .post */
+  top: calc(12% + 12% + 300px); /* Aligns with .post */
   width: 25%; /* Adjust width */
   min-height: 200px;
   background-color: white;
@@ -326,21 +344,6 @@
   font-size: 14px;
 }
 
-.playlist h3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.playlist ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.playlist li {
-  font-size: 14px;
-  color: black;
-  padding: 5px 0;
+.playlist iframe {
+  border-radius: 12px;
 }

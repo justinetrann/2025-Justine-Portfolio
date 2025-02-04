@@ -100,15 +100,24 @@ function App() {
             </div>
           </div>
         </div> {/* End of post */}
+        {/* ChatBot Container */}
+        <div className="chatbot">
+          <h2>New Section</h2>
+          <p>This is a new content container placed before the playlist.</p>
+        </div>
         {/* Playlist Container */}
         <div className="playlist">
-          <h3>My Playlist</h3>
-          <ul>
-            <li>🎵 Song 1 - Artist 1</li>
-            <li>🎵 Song 2 - Artist 2</li>
-            <li>🎵 Song 3 - Artist 3</li>
-            <li>🎵 Song 4 - Artist 4</li>
-          </ul>
+          <iframe
+            title="Spotify Playlist"
+            style={{ borderRadius: "12px" }}
+            src="https://open.spotify.com/embed/playlist/4ZbMjdW3G7JDllorPIC4lm?utm_source=generator"
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
         </div>
       </header>
     </div>
