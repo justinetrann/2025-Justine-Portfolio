@@ -6,7 +6,7 @@ function FloatingWindow({ title, onClose }) {
   return (
     <div className="floating-window">
       <div className="floating-header">
-        <span className="fake-link">https://{title.toLowerCase()}.fakeweb</span>
+        <span className="fake-link">https://{title.toLowerCase()}.com</span>
         <button className="close-button" onClick={onClose}>X</button>
       </div>
       <div className="floating-content">
