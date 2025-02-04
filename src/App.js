@@ -3,15 +3,29 @@ import './App.css';
 import { FaHeart } from "react-icons/fa";
 
 function FloatingWindow({ title, onClose }) {
+  const isResume = title === "RESUME";
+
   return (
-    <div className="floating-window">
+    <div className={`floating-window ${isResume ? "large-window" : ""}`}>
       <div className="floating-header">
         <span className="fake-link">https://{title.toLowerCase()}.com</span>
         <button className="close-button" onClick={onClose}>X</button>
       </div>
       <div className="floating-content">
-        <h3>{title} Page</h3>
-        <p>This is a fake webpage for {title}. Imagine content here!</p>
+        {isResume ? (
+          <iframe
+            src={`${process.env.PUBLIC_URL}/Tran_Justine_2025.pdf`}
+            width="100%"
+            height="100%"
+            style={{ border: "none" }}
+            title="Resume"
+          ></iframe>
+        ) : (
+          <>
+            <h3>{title} Page</h3>
+            <p>This is a fake webpage for {title}. Imagine content here!</p>
+          </>
+        )}
       </div>
     </div>
   );
@@ -53,7 +67,7 @@ function App() {
         </div>
           <nav className="side-nav">
           <ul>
-            {["HOME", "ABOUT", "PROJECT", "RESEARCH", "EXPERIENCE", "MORE"].map((item) => (
+            {["RESUME", "ABOUT", "PROJECT", "RESEARCH", "EXPERIENCE", "MORE"].map((item) => (
               <li key={item} onClick={() => setFloatingWindow(item)}>{item}</li>
             ))}
           </ul>
