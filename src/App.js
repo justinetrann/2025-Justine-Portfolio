@@ -2,6 +2,21 @@ import { useState } from "react";
 import './App.css';
 import { FaHeart } from "react-icons/fa";
 
+function FloatingWindow({ title, onClose }) {
+  return (
+    <div className="floating-window">
+      <div className="floating-header">
+        <span className="fake-link">https://{title.toLowerCase()}.fakeweb</span>
+        <button className="close-button" onClick={onClose}>X</button>
+      </div>
+      <div className="floating-content">
+        <h3>{title} Page</h3>
+        <p>This is a fake webpage for {title}. Imagine content here!</p>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [likes, setLikes] = useState(100156);
   const [comments, setComments] = useState([
@@ -12,6 +27,7 @@ function App() {
   const [newComment, setNewComment] = useState("");
   const [username, setUsername] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [floatingWindow, setFloatingWindow] = useState(null);
 
   const handleLike = () => {
     setLikes(likes + 1);
@@ -37,12 +53,9 @@ function App() {
         </div>
           <nav className="side-nav">
           <ul>
-            <li>HOME</li>
-            <li>ABOUT</li>
-            <li>PROJECT</li>
-            <li>RESEARCH</li>
-            <li>EXPERIENCE</li>
-            <li>MORE</li>
+            {["HOME", "ABOUT", "PROJECT", "RESEARCH", "EXPERIENCE", "MORE"].map((item) => (
+              <li key={item} onClick={() => setFloatingWindow(item)}>{item}</li>
+            ))}
           </ul>
         </nav>
         <div className="post">
@@ -117,6 +130,7 @@ function App() {
             loading="lazy"
           ></iframe>
         </div>
+        {floatingWindow && <FloatingWindow title={floatingWindow} onClose={() => setFloatingWindow(null)} />}
       </header>
     </div>
   );
