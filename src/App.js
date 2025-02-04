@@ -72,7 +72,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="top-container">
-          <h1 className="title">Justine Tran</h1>
+          <h1 className="title">Justine Trann</h1>
           <h2 className="subtitle">Portfolio</h2>
           <button className="chat-button">Chat Bot</button>
         </div>
