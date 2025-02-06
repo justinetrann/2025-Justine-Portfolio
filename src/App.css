@@ -468,11 +468,12 @@
   border-top-right-radius: 15px;
 }
 
+/* Ensures chat messages container always fills available space */
 .chatbot-messages {
-  flex: 1;
+  flex-grow: 1;
+  height: 250px;
   padding: 10px;
-  overflow-y: auto;
-  max-height: 250px;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid black;
@@ -484,11 +485,12 @@
   border-radius: 10px;
   margin-bottom: 5px;
   font-size: 14px;
-  max-width: 80%;
+  max-width: calc(100% - 20px); /* Prevents stretching while accounting for scrollbar */
   width: fit-content;
   word-wrap: break-word;
 }
 
+/* User messages (Right-Aligned) */
 .chat-message.user {
   align-self: flex-end;
   background-color: #e0e0e0;
@@ -498,22 +500,37 @@
   border-bottom-left-radius: 10px;
 }
 
+/* Justine's messages (Fully Left-Aligned) */
 .chat-message.bot {
   align-self: flex-start;
   background-color: #f4f4f4;
   text-align: left;
   border-radius: 10px;
-  margin-left: 0;
   width: fit-content;
   max-width: 80%;
   padding: 8px 12px;
 }
 
+/* Prevents first bot message from shifting */
 .chat-message.bot:first-child {
   width: fit-content;
   max-width: 80%;
-  margin-left: 0; /* Removes excess white space */
+  margin-left: 0;
   padding: 8px 12px;
+}
+
+/* --- Scrollbar Styling (Fixes Shift) --- */
+.chatbot-messages::-webkit-scrollbar {
+  width: 6px; /* Keeps scrollbar thin */
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
 /* --- Chat Input --- */
