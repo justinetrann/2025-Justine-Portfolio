@@ -10,7 +10,9 @@ function FloatingWindow({ title, onClose }) {
   Right now, my nav bar is filled with placeholders, but I want to replace them with projects that truly excite me! 
   Not just old school assignments from my resume, but creative, spontaneous ideas that spark my curiosity.
 
-  My latest fun idea? A chatbot—one where you can chat with me (or a virtual version of me) and ask me about my current experience!
+  My latest fun idea? A speaking bot that can make cold calls! Cold calling is when you reach out to people—often strangers—to pitch an idea, sell a product, or start a conversation without prior contact. It’s a skill used in sales, networking, and even job searching. 
+
+  Lately, I’ve been really into videos on how to cold-call effectively, and I want to see if I can build an AI that can do it for me. Imagine a bot that can confidently start conversations, handle objections, and maybe even close deals!
 
   This website may be simple for now, but my goal is to fill it with my passion for coding and bring my ideas to life. Stay tuned!
   `;
@@ -79,7 +81,7 @@ function App() {
         </div>
           <nav className="side-nav">
           <ul>
-            {["RESUME", "ABOUT", "PROJECT", "RESEARCH", "EXPERIENCE", "MORE"].map((item) => (
+            {["RESUME", "ABOUT", "COLD-CALL", "PROJECT", "EXPERIENCE", "MORE"].map((item) => (
               <li key={item} onClick={() => setFloatingWindow(item)}>{item}</li>
             ))}
           </ul>
