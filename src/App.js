@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './App.css';
+import ChatBot from "./ChatBot";
 import { FaHeart } from "react-icons/fa";
 
 function FloatingWindow({ title, onClose }) {
@@ -140,6 +141,7 @@ function App() {
         </div> {/* End of post */}
         {/* ChatBot Container */}
         <div className="chatbot">
+          <ChatBot/>
         </div>
         {/* Playlist Container */}
         <div className="playlist">
