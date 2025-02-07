@@ -564,3 +564,23 @@
 .chatbot-input button:hover {
   background-color: #333;
 }
+
+/* --- COLDCALL STYLING --- */
+.floating-content h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.floating-content button {
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.floating-content button:hover {
+  background-color: #333;
+}

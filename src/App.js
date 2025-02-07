@@ -1,11 +1,14 @@
 import { useState } from "react";
 import './App.css';
 import ChatBot from "./ChatBot";
+import ColdCallBot from "./ColdCallBot"
 import { FaHeart } from "react-icons/fa";
 
 function FloatingWindow({ title, onClose }) {
   const isResume = title === "RESUME";
   const isAbout = title === "ABOUT";
+  const isColdCall = title === "COLD-CALL";
+
   const aboutMessage = `
   Right now, my nav bar is filled with placeholders, but I want to replace them with projects that truly excite me! 
   Not just old school assignments from my resume, but creative, spontaneous ideas that spark my curiosity.
@@ -18,7 +21,7 @@ function FloatingWindow({ title, onClose }) {
   `;
 
   return (
-    <div className={`floating-window ${isResume ? "large-window" : ""} ${isAbout ? "about-window" : ""}`}>
+    <div className={`floating-window ${isResume ? "large-window" : ""} ${isAbout ? "about-window" : ""} ${isColdCall ? "large-window" : ""}`}>
       <div className="floating-header">
         <span className="fake-link">https://{title.toLowerCase()}.com</span>
         <button className="close-button" onClick={onClose}>X</button>
@@ -34,6 +37,8 @@ function FloatingWindow({ title, onClose }) {
           ></iframe>
         ) : title === "ABOUT" ? (
           <p className="about-text">{aboutMessage}</p>
+        ) : title === "COLD-CALL" ? (
+          <ColdCallBot />
         ) : (
           <>
             <h3>{title} Page</h3>
