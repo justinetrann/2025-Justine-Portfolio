@@ -565,22 +565,72 @@
   background-color: #333;
 }
 
-/* --- COLDCALL STYLING --- */
-.floating-content h3 {
-  font-size: 18px;
-  font-weight: bold;
+/*-- Chat History Styling --*/
+.chat-history-container {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto; /* Enables scrolling */
+  width: 50%;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.floating-content button {
+/* Smooth Scrolling */
+.chat-history-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-history-container::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 10px;
+}
+
+.chat-message-history {
+  font-size: 14px;
+  margin: 5px 0;
+  word-wrap: break-word;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.start-call-button {
   background-color: black;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  font-weight: bold;
 }
 
-.floating-content button:hover {
+.start-call-button:hover {
   background-color: #333;
+}
+
+/* Clear Chat Button */
+.clear-chat-button {
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.clear-chat-button:hover {
+  background-color: darkred;
 }

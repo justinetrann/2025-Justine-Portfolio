@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function ColdCallBot() {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [response, setResponse] = useState("");
+  const [chatHistory, setChatHistory] = useState([]);
+  const chatEndRef = useRef(null); // Reference for auto-scrolling
 
   useEffect(() => {
     if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
@@ -61,23 +63,79 @@ function ColdCallBot() {
 
     setResponse(botResponse); // Updates state with AI response
     speakResponse(botResponse); // Makes the AI speak out the response
+
+    // Update Chat History & Auto-scroll
+    setChatHistory((prevHistory) => [
+      ...prevHistory,
+      { user: "You", message: userInput },
+      { user: "Bot", message: botResponse },
+    ]);
+
+    setTimeout(() => {
+      chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   // Function to make the AI speak
   const speakResponse = (text) => {
     const utterance = new SpeechSynthesisUtterance(text); // Creates a speech object
     utterance.lang = "en-US";
-    window.speechSynthesis.speak(utterance); // Uses browser's Text-to-Speech to speak
+    utterance.pitch = 1; // Normal pitch (range: 0 - 2)
+    utterance.rate = 0.9; // Slightly slower for clarity (range: 0.1 - 10)
+    utterance.volume = 1; // Full volume
+
+      // Get list of voices
+      const voices = window.speechSynthesis.getVoices();
+      const preferredVoice = voices.find(voice => 
+        voice.name.includes("Google US English") || 
+        voice.name.includes("Microsoft") || 
+        voice.name.includes("Daniel") // A good British voice option
+      );
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+
+      window.speechSynthesis.speak(utterance);
+  };
+
+  // Function to clear chat history
+  const clearChat = () => {
+    setChatHistory([]);
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h3>Cold Call AI</h3>
-      <button onClick={startListening} disabled={listening}>
-        {listening ? "Listening..." : "Start Cold Call"}
-      </button>
+
+      {/* Button Container */}
+      <div className="button-container">
+        <button onClick={startListening} disabled={listening} className="start-call-button">
+          {listening ? "Listening..." : "Start Cold Call"}
+        </button>
+        <button onClick={clearChat} className="clear-chat-button">
+          Clear Chat History
+        </button>
+      </div>
+
+      {/* Transcript and Response */}
       <p><strong>You Said:</strong> {transcript}</p>
       <p><strong>AI Response:</strong> {response}</p>
+
+      {/* Chat History Display */}
+      <div className="chat-history-container">
+        <h4>Chat History</h4>
+        {chatHistory.length > 0 ? (
+          chatHistory.map((chat, index) => (
+            <p key={index} className="chat-message-history">
+              <strong>{chat.user}:</strong> {chat.message}
+            </p>
+          ))
+        ) : (
+          <p>No chat history yet.</p>
+        )}
+        <div ref={chatEndRef} />
+      </div>
     </div>
   );
 }
